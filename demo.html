@@ -1,0 +1,36 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" charset="utf-8"></script>
+<script src="jQuery.selectableText.js" charset="utf-8"></script>
+<script>
+$(function(){
+    $('textarea, input[type="text"]').selectableText();
+
+    var taFrom = $('textarea'),
+        inpFrom = $('input[type="text"]'),
+        taTo = $('#ta'),
+        inpTo = $('#inp');
+
+    $('input[type="button"]').click(function(){
+        taTo.html('['+taFrom.selectableText('getStart')+'; '+taFrom.selectableText('getEnd')+'] - '+taFrom.selectableText('getSelectedText'));
+
+        var pos = inpFrom.selectableText('getPos');
+        inpTo.html('['+pos.start+'; '+pos.end+'] - '+inpFrom.selectableText('getSelectedText'));
+    });
+});
+</script>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td><textarea name="" style="width: 200px; height: 100px">текст, который можно (и нужно) выделять мышкой</textarea></td>
+        <td><span id="ta"></span></td>
+    </tr>
+    <tr>
+        <td><input name="" type="text" value="текст, который можно (и нужно) выделять мышкой" style="width: 200px" /></td>
+        <td><span id="inp"></span></td>
+    </tr>
+</table>
+<input type="button" value="Get" />
+</body>
+</html>
